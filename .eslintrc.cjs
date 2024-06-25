@@ -4,26 +4,16 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:jest/recommended',
-    'plugin:jest-dom/recommended',
-    'plugin:react/jsx-runtime',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'coverage', 'node_module'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: [
-    'react-refresh',
-    'import',
-    'simple-import-sort',
-    'jsx-a11y',
-    'jest',
-    'jest-dom',
-    'testing-library',
-  ],
+  plugins: ['react-refresh', 'import', 'simple-import-sort'],
   rules: {
     'import/no-empty-named-blocks': 'error',
     'import/first': 'error',
@@ -48,7 +38,11 @@ module.exports = {
   overrides: [
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-      extends: ['plugin:testing-library/react'],
+      extends: [
+        'plugin:testing-library/react',
+        'plugin:jest/recommended',
+        'plugin:jest-dom/recommended',
+      ],
     },
   ],
 };
